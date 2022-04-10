@@ -7,6 +7,7 @@ export const Filter = ({onChange, text}) =>{
         name="filter"
         value = {text}
         onChange={onChange}
+        className="filter"
         />
         </>
     )
