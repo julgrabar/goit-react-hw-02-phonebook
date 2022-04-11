@@ -50,14 +50,18 @@ export class App extends Component {
   };
 
   findPhones() {
-    const normalizedValue = this.state.filter.toLowerCase();
-    const filteredArray = this.state.contacts.filter(contact =>
+    const {filter, contacts} = this.state;
+    
+    const normalizedValue = filter.toLowerCase();
+    const filteredArray = contacts.filter(contact =>
       contact.name.toLowerCase().includes(normalizedValue)
     );
     return filteredArray;
   }
 
   render() {
+    const {filter} = this.state;  
+
     return (
       <div>
         <Global/>
@@ -66,7 +70,7 @@ export class App extends Component {
         <ContactForm onSubmit={this.addNewContact} />
 
         <h2>Contacts</h2>
-        <Filter onChange={this.onFilterInput} text={this.state.filter} />
+        <Filter onChange={this.onFilterInput} text={filter} />
         <ContactList
           contacts={this.findPhones()}
           onDeleteBtn={this.deleteContact}
